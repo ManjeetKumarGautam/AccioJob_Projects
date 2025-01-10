@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Food Ordering System</title>
+</head>
+
+<body>
+
+    <div class="app" id="app">
+        <!-- side navbar -->
+        <div class="nav" id="sidebar">
+            <i class="fa-solid fa-xmark" id="cross-icon"></i>
+            <div class="nav-img">
+                <img src="./assets/logo.png" alt="logo-img" class="img">
+                <h2 class="title">Your Restaurant Name</h2>
+                <p>Your Slogan</p>
+            </div>
+            <div class="quick-links">
+                <h2>Quick Links</h2>
+                <ul class="links">
+                    <li class="link active"><a href="" onclick="">Home</a></li>
+                    <li class="link"><a href="">Your Order</a></li>
+                    <li class="link"><a href="">Wallets</a></li>
+                    <li class="link"><a href="">Profile</a></li>
+                    <li class="link"><a href="">Logout</a></li>
+                </ul>
+            </div>
+            <div class="more-links">
+                <h2>More About uss</h2>
+                <ul class="links">
+                    <li class="link"><a href="">Our Blog</a></li>
+                    <li class="link"><a href="">Upcoming Dishes</a></li>
+                    <li class="link"><a href="">Our Story</a></li>
+                    <li class="link"><a href="">Social Media links</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- content area -->
+        <div class="container">
+            <div class="header">
+                <i class="fa-solid fa-bars" id="bar-icon"></i>
+                <div class="search-box">
+                    <input type="text" placeholder="Search..." id="search">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                </div>
+                <div class="header-btns">
+                    <button>Sign Up</button>
+                    <button>Login</button>
+                </div>
+                <div class="icon">
+                    <img src="./assets/logo.png" alt="">
+                </div>
+            </div>
+
+            <div class="banner">
+                <img src="./assets/banner.png" alt="">
+            </div>
+
+            <div class="food-container" id="content">
+                <h2>Menu</h2>
+                <div class="foods-items" id="food-items">
+                </div>
+            </div>
+
+            <div class="order-container" id="order">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

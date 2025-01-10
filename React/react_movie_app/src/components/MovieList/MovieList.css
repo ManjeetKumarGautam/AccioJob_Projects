@@ -1,0 +1,25 @@
+.movies-list {
+    width: 100%;
+}
+
+.movies-list>table {
+    width: 100%;
+    text-align: left;
+}
+
+table,
+tr,
+th,
+td {
+    border-collapse: collapse;
+}
+
+thead {
+    background: #12a887;
+}
+
+tbody>tr:hover {
+    transform: scale(1.01);
+    background: white;
+    border: 1px solid gray;
+}

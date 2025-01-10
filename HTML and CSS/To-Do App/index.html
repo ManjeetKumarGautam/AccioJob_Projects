@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do App</title>
+</head>
+
+<body>
+
+    <div id="container" class="container">
+        <h1> TO-DO Application</h1>
+
+        <div class="add-task-form">
+            <input type="text" id="task-name-input" placeholder="Enter your Task" />
+            <input type="date" id="task-date-input" placeholder="Task Deadline">
+            <select name="priority" id="task-priority-input">
+                <option value="priority" selected disabled>Priority</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <button id="add-task-btn">Add Task</button>
+
+        </div>
+        <div class="task-list">
+            <h2>Today's Task</h2>
+            <ul id="today-tasks" class="tasks"> </ul>
+        </div>
+        <div class="task-list">
+            <h2>Future's Task</h2>
+            <ul id="future-tasks" class="tasks"> </ul>
+        </div>
+        <div class="task-list">
+            <h2>Completed Task</h2>
+            <ul id="completed-tasks" class="tasks"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
