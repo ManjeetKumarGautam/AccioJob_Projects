@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Coin Tracker</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="filter">
+            <div class="searching">
+                <form id="search-form">
+                    <input id="search-input" type="text" placeholder="Search by Name/Symbol..." />
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <div class="sorting">
+                <button id="mkt-cap-btn">Sort by Mrt. Cap</button>
+                <button id="percentage-btn">Sort by Percentage</button>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Current Price</th>
+                    <th>Total Volumn</th>
+                    <th>Percentage</th>
+                    <th>Market Cap(Mkt. Cap)</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

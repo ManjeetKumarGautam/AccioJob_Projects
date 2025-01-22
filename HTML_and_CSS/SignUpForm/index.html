@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/x-icon">
     <!-- css link -->
     <link rel="stylesheet" href="style.css">
     <!-- Title of the page -->
@@ -25,7 +26,10 @@
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" id="" required>
+                    <input type="password" name="password" id=""
+                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
+                        title="Password must be at least 8 characters long, include uppercase and lowercase letters, a number, and a special character."
+                        required>
                 </div>
                 <div class="input-group">
                     <label for="cpassword">Confirm Password</label>

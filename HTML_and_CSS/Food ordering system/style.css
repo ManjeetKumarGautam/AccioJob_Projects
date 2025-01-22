@@ -37,6 +37,7 @@ li {
     height: 100vh;
     padding: 10px;
     position: relative;
+    overflow-y: auto;
 }
 
 #cross-icon {
@@ -250,7 +251,6 @@ li {
 
 .foods-items {
     width: 100%;
-
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 26px;

@@ -2,6 +2,7 @@ const foodItems = document.getElementById("food-items");
 const sidebar = document.getElementById("sidebar");
 const barIcon = document.getElementById("bar-icon");
 const crossIcon = document.getElementById("cross-icon");
+
 barIcon.addEventListener("click", () => {
     sidebar.classList.toggle("active");
 });
@@ -11,8 +12,11 @@ crossIcon.addEventListener("click", () => {
 
 
 async function getMenu() {
-    const response = await fetch("./assets/data.json").then(response => response.json());
-    response.forEach(item => {
+    const response = await fetch("https://foodiewoodie-5up0.onrender.com/api/food/list")
+        .then(response => response.json())
+        .then(data => { return data })
+        .catch(e => console.log(e));
+    response.data.forEach(item => {
         const foodItem = document.createElement("div");
         foodItem.classList.add("food-card");
         foodItem.innerHTML = `<div class="food-card">
@@ -30,9 +34,7 @@ async function getMenu() {
     });
     return new Promise((resolve) => {
         setTimeout(() => {
-
-            console.log("Menu loaded:", response);
-            resolve(response);
+            resolve(response.data);
         }, 1000);
     });
 }
