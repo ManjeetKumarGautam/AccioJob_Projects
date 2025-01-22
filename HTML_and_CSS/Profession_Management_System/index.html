@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Profession Management System</title>
+</head>
+
+<body>
+
+
+    <div class="container">
+
+        <h2>Add New Profession</h2>
+        <form class="style-form">
+            <div class="input-group">
+                <label for="">Name :</label>
+                <input type="text" id="name" />
+            </div>
+            <div class="input-row">
+                <div class="input-group">
+                    <label for="">Profession :</label>
+                    <input type="text" id="profession" />
+                </div>
+                <div class="input-group">
+                    <label for="">Age :</label>
+                    <input type="number" id="age" />
+                </div>
+            </div>
+
+            <button id="add-btn">+ Add</button>
+        </form>
+
+        <h2>Profession List</h2>
+        <div class="emp-list">
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Profession</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>

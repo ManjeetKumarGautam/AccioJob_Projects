@@ -2,7 +2,7 @@ const userName = document.getElementById("name");
 const profession = document.getElementById("profession");
 const age = document.getElementById("age");
 const addBtn = document.getElementById("add-btn");
-const userTable = document.getElementById("user-table");
+const userTable = document.getElementById("table-body");
 
 let arr = [
     { id: 1, name: "Jack", profession: "Developer", age: 20 },
@@ -18,8 +18,9 @@ addBtn.addEventListener("click", (e) => {
         return;
     }
 
-    // let id = arr[arr.length]
+    let newId = arr[arr.length - 1].id + 1;
     let newEmp = {
+        id: newId,
         name: userName.value,
         profession: profession.value,
         age: age.value
@@ -29,25 +30,17 @@ addBtn.addEventListener("click", (e) => {
 })
 
 function render() {
-    userTable.innerHTML = `
-    <tr>
-        <th>S. No.</th>
-        <th>Name</th>
-        <th>Profession</th>
-        <th>Age</th>
-        <th>Action</th>
-    </tr>
-    `;
+    userTable.innerHTML = "";
 
     arr.forEach((emp, i) => {
 
         userTable.innerHTML += `
         <tr>
-            <td>${i + 1}</td>
+            <td>${emp.id}</td>
             <td>${emp.name}</td>
             <td>${emp.profession}</td>
             <td>${emp.age}</td>
-            <td><button class="del-btn" onclick=delEmp(${i})>del</button></td>
+            <td><i class="fa-solid fa-trash" onclick=delEmp(${i})></i></td>
         </tr>
     `
 
@@ -56,7 +49,6 @@ function render() {
 }
 
 function delEmp(index) {
-    console.log(index);
     arr.splice(index, 1);
     render();
 }

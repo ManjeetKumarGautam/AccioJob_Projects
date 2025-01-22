@@ -1,0 +1,156 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+
+}
+
+body {
+    background-color: #212121;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+}
+
+.container>h2 {
+    margin: 30px 0;
+    text-align: center;
+    color: #009879;
+}
+
+/* form css */
+.style-form {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+
+}
+
+.style-form .input-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.style-form .input-group label {
+    font-size: 1em;
+    font-weight: 700;
+    color: #009879;
+    margin-bottom: 10px;
+}
+
+.style-form .input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    background-color: #303030;
+    border: none;
+    color: #ffffff;
+    outline-color: #009879;
+}
+
+.style-form .input-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.style-form button {
+    margin-right: 20px;
+    padding: 6px 20px;
+    background-color: #009879;
+    font-size: 1em;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+}
+
+/* table css */
+.styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 900px;
+    margin: 25px auto;
+    font-size: 1em;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+    overflow-x: auto;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+    text-transform: capitalize;
+    word-break: break-word;
+
+}
+
+.styled-table thead tr {
+    border: 1px solid #009879;
+}
+
+.styled-table tbody tr {
+    border: 1px solid #dddddd;
+    color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 5px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    font-weight: bold;
+    color: #009879;
+    background-color: #303030;
+}
+
+.styled-table tbody tr .fa-trash {
+    cursor: pointer;
+}
+
+/* Responsive CSS */
+@media (max-width: 768px) {
+
+    .style-form button {
+        width: 100%;
+        margin-right: 0;
+        padding: 10px;
+    }
+
+    .styled-table {
+        font-size: 0.9em;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .style-form .input-group label {
+        font-size: 0.9em;
+    }
+
+    .style-form button {
+        font-size: 1em;
+    }
+
+    .styled-table {
+        font-size: 0.8em;
+    }
+
+    .styled-table th,
+    .styled-table td {
+        padding: 8px;
+    }
+}
