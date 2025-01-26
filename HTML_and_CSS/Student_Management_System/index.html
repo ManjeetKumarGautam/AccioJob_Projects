@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Student Management System</title>
+</head>
+
+<body>
+    <div class="header">
+        <h2>Student - Portal</h2>
+    </div>
+    <div class="actions-box">
+        <form class="searching">
+            <input type="text" id="search-input" placeholder="Search by First Name, Last Name and Email...">
+            <button id="search-btn" type="">Search</button>
+
+        </form>
+        <div class="sorting">
+            <button class="btn" id="btn1">Sort A->Z</button>
+            <button class="btn" id="btn2">Sort Z->A</button>
+            <button class="btn" id="btn3">Sort By Marks</button>
+            <button class="btn" id="btn4">Sort By Passing</button>
+            <button class="btn" id="btn5">Sort By Class</button>
+            <button class="btn" id="btn6">Sort By Gender</button>
+        </div>
+    </div>
+
+    <div class="students">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>gender</th>
+                    <th>marks</th>
+                    <th>class</th>
+                    <th>passing</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody id="student-table">
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <div id="genderTables" class="students hidden">
+        <table id="maleTable" class="students">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>gender (Male)</th>
+                    <th>marks</th>
+                    <th>class</th>
+                    <th>passing</th>
+                    <th>email</th>
+                </tr>
+
+            </thead>
+            <tbody id="maleTableBody"></tbody>
+        </table>
+
+        <table id="femaleTable" class="students">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>gender (Female)</th>
+                    <th>marks</th>
+                    <th>class</th>
+                    <th>passing</th>
+                    <th>email</th>
+                </tr>
+
+            </thead>
+            <tbody id="femaleTableBody"></tbody>
+        </table>
+        <table id="otherTable" class="students">
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>name</th>
+                    <th>gender(Others)</th>
+                    <th>marks</th>
+                    <th>class</th>
+                    <th>passing</th>
+                    <th>email</th>
+                </tr>
+
+            </thead>
+            <tbody id="otherTableBody"></tbody>
+        </table>
+    </div>
+    <div class="footer"></div>
+    <script src="./student.js"></script>
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
