@@ -3,12 +3,13 @@ const searchBtn = document.querySelector("#search-btn");
 const stdTable = document.querySelector("#student-table");
 const genderTable = document.getElementById("genderTables");
 const studentsTable = document.querySelector(".students");
-// table for gender
+
+// Tables for gender
 const maleTable = document.querySelector("#maleTableBody");
 const femaleTable = document.querySelector("#femaleTableBody");
 const otherTable = document.querySelector("#otherTableBody");
 
-// sorting buttons 
+// Sorting buttons
 const btn1 = document.querySelector("#btn1");
 const btn2 = document.querySelector("#btn2");
 const btn3 = document.querySelector("#btn3");
@@ -16,154 +17,115 @@ const btn4 = document.querySelector("#btn4");
 const btn5 = document.querySelector("#btn5");
 const btn6 = document.querySelector("#btn6");
 
-let stdArr = students;
+let stdArr = [];
 
-// search by first name, last name and email
+async function fetchData() {
+    try {
+        const response = await fetch("https://gist.githubusercontent.com/harsh3195/b441881e0020817b84e34d27ba448418/raw/c4fde6f42310987a54ae1bc3d9b8bfbafac15617/demo-json-data.json");
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const data = await response.json();
+        stdArr = data;
+        render(stdArr);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+// Search by first name, last name, and email
 const handleSearch = (event) => {
     event.preventDefault();
-    let data = stdArr.filter((std) => {
-        if (std.first_name.toLowerCase().includes(searchInput.value.toLowerCase())) return std;
-        if (std.last_name.toLowerCase().includes(searchInput.value.toLowerCase())) return std;
-        if (std.email.toLowerCase().includes(searchInput.value.toLowerCase())) return std;
-    });
-
-    render(data);
+    const query = searchInput.value.toLowerCase();
+    const filteredData = stdArr.filter((std) =>
+        std.first_name.toLowerCase().includes(query) ||
+        std.last_name.toLowerCase().includes(query) ||
+        std.email.toLowerCase().includes(query)
+    );
+    render(filteredData);
 };
 searchInput.addEventListener("change", handleSearch);
 searchBtn.addEventListener("click", handleSearch);
 
+// Sorting functions
 
-// sort A-> Z
+// sort by first name
 btn1.addEventListener("click", (event) => {
     event.preventDefault();
-    stdArr.sort((a, b) => {
-        if (a.first_name.toLowerCase() < b.first_name.toLowerCase()) return -1;
-        if (a.first_name.toLowerCase() > b.first_name.toLowerCase()) return 1;
-        return 0;
-    })
-    render(stdArr);
+    const sortedData = [...stdArr].sort((a, b) =>
+        a.first_name.toLowerCase().localeCompare(b.first_name.toLowerCase())
+    );
+    render(sortedData);
 });
-
-// sort Z-> A
+// sort by last name
 btn2.addEventListener("click", (event) => {
     event.preventDefault();
-    stdArr.sort((a, b) => {
-        if (a.first_name.toLowerCase() < b.first_name.toLowerCase()) return 1;
-        if (a.first_name.toLowerCase() > b.first_name.toLowerCase()) return -1;
-        return 0;
-    })
-    render(stdArr);
+    const sortedData = [...stdArr].sort((a, b) =>
+        b.first_name.toLowerCase().localeCompare(a.first_name.toLowerCase())
+    );
+    render(sortedData);
 });
 
 // sort by marks
 btn3.addEventListener("click", (event) => {
     event.preventDefault();
-    stdArr.sort((a, b) => {
-        return a.marks - b.marks;
-    })
-    render(stdArr);
+    const sortedData = [...stdArr].sort((a, b) => a.marks - b.marks);
+    render(sortedData);
 });
+
 // sort by passing
 btn4.addEventListener("click", (event) => {
     event.preventDefault();
-    let stdPass = stdArr.filter((s) => {
-        if (s.passing) return s;
-    })
-    render(stdPass);
+    const passingStudents = stdArr.filter((std) => std.passing);
+    render(passingStudents);
 });
+
 // sort by class
 btn5.addEventListener("click", (event) => {
     event.preventDefault();
-    stdArr.sort((a, b) => {
-        return a.class - b.class;
-    })
-    render(stdArr);
+    const sortedData = [...stdArr].sort((a, b) => a.class - b.class);
+    render(sortedData);
 });
 
 // sort by gender
 btn6.addEventListener("click", (event) => {
     event.preventDefault();
+    const male = stdArr.filter((std) => std.gender.toLowerCase() === "male");
+    const female = stdArr.filter((std) => std.gender.toLowerCase() === "female");
+    const other = stdArr.filter(
+        (std) =>
+            std.gender.toLowerCase() !== "male" &&
+            std.gender.toLowerCase() !== "female"
+    );
+    renderTableByGender([male, female, other]);
+});
 
-    const male = stdArr.filter((std) => {
-        return std.gender.toLowerCase() == "male"
-    });
-    const female = stdArr.filter((std) => {
-        return std.gender.toLowerCase() == "female"
-    });
-    const other = stdArr.filter((std) => {
-        return std.gender.toLowerCase() !== "male" && std.gender.toLowerCase() !== "female"
-    });
-    other.sort((a, b) => {
-        if (a.gender.toLowerCase() < b.gender.toLowerCase()) return -1;
-        if (a.gender.toLowerCase() > b.gender.toLowerCase()) return 1;
-        return 0;
-    })
-
-    const arr = [male, female, other];
-    renderTableByGender(arr);
-
-})
-
-// render table by gender
+// Render table by gender
 function renderTableByGender(arr) {
     genderTable.classList.remove("hidden");
     studentsTable.classList.add("hidden");
-    maleTable.innerHTML = '';
-    femaleTable.innerHTML = '';
-    otherTable.innerHTML = '';
+    maleTable.innerHTML = "";
+    femaleTable.innerHTML = "";
+    otherTable.innerHTML = "";
 
-    arr[0].forEach(std => {
-        maleTable.innerHTML += `
-        <tr>
-            <td>${std.id}</td>
-            <td>${std.first_name} ${std.last_name}</td>
-            <td>${std.gender}</td>
-            <td>${std.marks}</td>
-            <td>${std.class}</td>
-            <td style="text-transform: capitalize;">${std.passing}</td>
-            <td>${std.email}</td>
-        </tr>
-        `;
+    arr[0].forEach((std) => {
+        maleTable.innerHTML += renderRow(std);
     });
-    arr[1].forEach(std => {
-        femaleTable.innerHTML += `
-        <tr>
-            <td>${std.id}</td>
-            <td>${std.first_name} ${std.last_name}</td>
-            <td>${std.gender}</td>
-            <td>${std.marks}</td>
-            <td>${std.class}</td>
-            <td style="text-transform: capitalize;">${std.passing}</td>
-            <td>${std.email}</td>
-        </tr>
-        `;
+    arr[1].forEach((std) => {
+        femaleTable.innerHTML += renderRow(std);
     });
-
-    arr[2].forEach(std => {
-        otherTable.innerHTML += `
-        <tr>
-            <td>${std.id}</td>
-            <td>${std.first_name} ${std.last_name}</td>
-            <td>${std.gender}</td>
-            <td>${std.marks}</td>
-            <td>${std.class}</td>
-            <td style="text-transform: capitalize;">${std.passing}</td>
-            <td>${std.email}</td>
-        </tr>
-        `;
+    arr[2].forEach((std) => {
+        otherTable.innerHTML += renderRow(std);
     });
-
-
 }
 
-// render table
+// Render the main table
 function render(arr) {
     genderTable.classList.add("hidden");
     studentsTable.classList.remove("hidden");
+    stdTable.innerHTML = "";
 
-    stdTable.innerHTML = '';
-
-    arr.forEach(std => {
+    arr.forEach((std) => {
         stdTable.innerHTML += `
         <tr>
             <td>${std.id}</td>
@@ -171,15 +133,12 @@ function render(arr) {
             <td>${std.gender}</td>
             <td>${std.marks}</td>
             <td>${std.class}</td>
-            <td style="text-transform: capitalize;">${std.passing}</td>
+            <td style="text-transform: capitalize;">${std.passing ? "Yes" : "No"}</td>
             <td>${std.email}</td>
         </tr>
-        `;
+    `;
     });
-
 }
 
-
-
-
-render(stdArr);
+// Fetch data on page load
+fetchData();
