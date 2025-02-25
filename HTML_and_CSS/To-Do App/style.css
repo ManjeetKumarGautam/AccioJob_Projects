@@ -1,87 +1,123 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
+
+
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins;
 }
 
-li {
-    list-style: none;
+body {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.container {
-    width: 100%;
-    height: 100vh;
-    padding: 20px;
-}
-
-.container h1 {
+h1 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.6rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
 }
 
-form {
-    width: 100%;
+.input-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+input,
+select,
+button {
+    padding: 0.75rem;
+    font-size: 1rem;
 }
 
 input[type="text"] {
-    width: min(600px, 100%);
-    font-size: 18px;
-    padding: 5px;
+    flex: 2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 input[type="date"] {
-    width: min(300px, 48.5%);
-    font-size: 18px;
-    padding: 5px;
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 select {
-    width: min(250px, 48.5%);
-    font-size: 18px;
-    padding: 5px;
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-    padding: 5px 18px;
-    font-size: 18px;
-
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 0.75rem 1.5rem;
 }
 
-/* task section */
-.task-list {
-    width: 100%;
-    height: 160px;
-    /* background-color: beige; */
-    margin-bottom: 20px;
+button:hover {
+    opacity: 0.9;
 }
 
-.task {
-    padding: 5px 10px;
-    font-size: 18px;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 2.5fr 1fr 1fr 0.3fr;
-    margin-top: 10px;
+.todo-section {
+    margin-bottom: 2rem;
 }
 
-.icons {
+.todo-section h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.todo-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.6rem 1.4rem;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+}
+
+.todo-item:not(.completed) {
+    background: #000;
+    color: white;
+}
+
+.todo-item.completed {
+    background: white;
+    border: 1px solid #000;
+}
+
+.todo-actions {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.todo-actions button {
+    background: none;
+    padding: 0.25rem;
+}
+
+.todo-item:not(.completed) .todo-actions button {
+    color: white;
+}
+
+.todo-item.completed .todo-actions button {
+    color: black;
+}
+
+.todo-item.completed .todo-actions .completedTask {
+    display: none;
+}
+
+@media(max-width:640px) {
+    .input-container {
+        flex-direction: column;
+    }
 }

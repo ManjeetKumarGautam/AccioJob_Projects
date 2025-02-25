@@ -1,95 +1,104 @@
-const taskNameInput = document.getElementById("task-name-input");
-const taskDateInput = document.getElementById("task-date-input");
-const taskPriorityInput = document.getElementById("task-priority-input");
-const addTaskBtn = document.getElementById("add-task-btn");
-const todayTasks = document.getElementById("today-tasks");
-const futureTasks = document.getElementById("future-tasks");
-const completedTasks = document.getElementById("completed-tasks");
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-// Initialize tasks from localStorage
-let tasks = JSON.parse(localStorage.getItem("todoTasks")) || [];
+function addTodo() {
+    const itemName = document.getElementById('itemName').value;
+    const deadline = document.getElementById('deadline').value;
+    const priority = document.getElementById('priority').value;
 
-
-
-// Add a task
-addTaskBtn.addEventListener("click", () => {
-    const taskName = taskNameInput.value;
-    const taskDate = taskDateInput.value;
-    const taskPriority = taskPriorityInput.value;
-
-    if (!taskName || !taskDate) {
-        alert("Please fill in all fields!");
+    if (!itemName || !deadline) {
+        alert('Please fill in all fields');
         return;
     }
 
-    const newTask = {
-        name: taskName,
-        date: taskDate,
-        priority: taskPriority,
-        completed: false,
+    const todo = {
+        id: Date.now(),
+        name: itemName,
+        deadline: deadline,
+        priority: priority,
+        completed: false
     };
 
-    tasks.push(newTask);
-    saveTasks();
-    renderTasks();
-
-    // Clear inputs
-    taskNameInput.value = "";
-    taskDateInput.value = "";
-    taskPriorityInput.value = "high";
-});
-
-// Save tasks to localStorage
-function saveTasks() {
-    localStorage.setItem("todoTasks", JSON.stringify(tasks));
+    todos.push(todo);
+    saveTodos();
+    renderTodos();
+    clearInputs();
 }
 
-// Render tasks into their respective sections
-function renderTasks() {
-    todayTasks.innerHTML = "";
-    futureTasks.innerHTML = "";
-    completedTasks.innerHTML = "";
+function toggleTodo(id) {
+    const todo = todos.find(t => t.id === id);
+    if (todo) {
+        todo.completed = !todo.completed;
+        saveTodos();
+        renderTodos();
+    }
+}
 
-    const today = new Date().toISOString().split("T")[0];
+function deleteTodo(id) {
+    todos = todos.filter(t => t.id !== id);
+    saveTodos();
+    renderTodos();
+}
 
-    tasks.forEach((task, index) => {
-        const taskItem = document.createElement("li");
-        taskItem.classList.add("task");
-        taskItem.classList.add("task-item");
-        taskItem.innerHTML = `
-            
-            <p class="task-name">${task.name}</p>
-            <p class="task-date">${task.date}</p>
-            <p class="task-priority">${task.priority}</p>
-            <div class="icons">
-                <a href="#" class="icon complete-btn"><i class="fa-solid fa-circle-check"></i></a>
-                <a href="#" class="icon delete-btn"><i class="fa-solid fa-trash"></i></a>
-            </div>
-            
-        `;
+function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
 
-        // Add event listeners
-        taskItem.querySelector(".complete-btn").addEventListener("click", () => {
-            tasks[index].completed = !tasks[index].completed;
-            saveTasks();
-            renderTasks();
-        });
+function clearInputs() {
+    document.getElementById('itemName').value = '';
+    document.getElementById('deadline').value = '';
+    document.getElementById('priority').value = 'High';
+}
 
-        taskItem.querySelector(".delete-btn").addEventListener("click", () => {
-            tasks.splice(index, 1);
-            saveTasks();
-            renderTasks();
-        });
+function renderTodos() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-        // Append tasks to respective sections
-        if (task.completed) {
-            completedTasks.appendChild(taskItem);
-        } else if (task.date === today) {
-            todayTasks.appendChild(taskItem);
-        } else {
-            futureTasks.appendChild(taskItem);
+    const todayTodos = document.getElementById('todayTodos');
+    const futureTodos = document.getElementById('futureTodos');
+    const completedTodos = document.getElementById('completedTodos');
+
+    todayTodos.innerHTML = '<h2>Today\'s TodoList</h2>';
+    futureTodos.innerHTML = '<h2>Future TodoList</h2>';
+    completedTodos.innerHTML = '<h2>Completed TodoList</h2>';
+
+    todos.forEach(todo => {
+        const todoDate = new Date(todo.deadline);
+        todoDate.setHours(0, 0, 0, 0);
+
+        const todoElement = createTodoElement(todo);
+
+        if (todo.completed) {
+            completedTodos.appendChild(todoElement);
+        } else if (todoDate.getTime() === today.getTime()) {
+            todayTodos.appendChild(todoElement);
+        } else if (todoDate > today) {
+            futureTodos.appendChild(todoElement);
         }
     });
 }
-// Render tasks on load
-renderTasks();
+
+function createTodoElement(todo) {
+    const div = document.createElement('div');
+    div.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+
+    div.innerHTML = `
+                <span>${todo.name}</span>
+                <span>${formatDate(todo.deadline)}</span>
+                <span>Priority: ${todo.priority}</span>
+                <div class="todo-actions">
+                    <button class="${todo.completed ? 'completedTask' : ' '}" onclick="toggleTodo(${todo.id})"><i class="fa-solid fa-circle-check"></i></button> 
+                    <button onclick="deleteTodo(${todo.id})"><i class="fa-solid fa-trash"></i></button>
+                
+                </div>
+            `;
+
+    return div;
+}
+
+function formatDate(dateString) {
+    const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
+    return new Date(dateString).toLocaleDateString('en-GB', options);
+}
+
+// Initial render
+renderTodos();
