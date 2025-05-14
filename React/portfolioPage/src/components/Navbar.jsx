@@ -45,7 +45,7 @@ const Navbar = () => {
                         </div>
 
                         {/* Nav Items */}
-                        <ul className="flex flex-col gap-6 text-gray-800 font-medium text-lg">
+                        <ul className="w-full flex flex-col gap-6 text-gray-800 font-medium text-center text-lg">
                             <li><a href="#">Solutions</a></li>
                             <li><a href="#">Resources</a></li>
                             <li><a href="#">About us</a></li>

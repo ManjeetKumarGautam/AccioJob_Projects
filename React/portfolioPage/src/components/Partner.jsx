@@ -36,7 +36,7 @@ const Partner = () => {
                 </div>
             </div>
             {/* Decorative Line */}
-            <div className="line translate-[100%] w-[50%] md:translate-[150%] md:w-[40%] h-2 mt-10 bg-amber-600 mx-auto"></div>
+            <div className="line translate-[100%] w-[50%] md:translate-[150%] md:w-[40%] h-2 mt-10 bg-[#E94724] mx-auto"></div>
 
         </section>
     )

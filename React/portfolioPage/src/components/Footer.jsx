@@ -26,10 +26,10 @@ const Footer = () => {
                     <span>Chat with us</span>
                     <div className="line w-30 h-1 my-2 bg-[#E94724]"></div>
                     <div className='flex flex-row gap-2'>
-                        <img src={assets.fb} alt="icon" className='w-6' />
-                        <img src={assets.insta} alt="icon" className='w-6' />
-                        <img src={assets.twitter} alt="icon" className='w-6' />
-                        <img src={assets.linkedin} alt="icon" className='w-6' />
+                        <a href="https://www.facebook.com/" target='_new'><img src={assets.fb} alt="icon" className='w-6' /></a>
+                        <a href="https://www.instagram.com/" target='_new'><img src={assets.insta} alt="icon" className='w-6' /></a>
+                        <a href="https://x.com/" target='_new'><img src={assets.twitter} alt="icon" className='w-6' /></a>
+                        <a href="https://www.linkedin.com/" target='_new'><img src={assets.linkedin} alt="icon" className='w-6' /></a>
                     </div>
                 </div>
 

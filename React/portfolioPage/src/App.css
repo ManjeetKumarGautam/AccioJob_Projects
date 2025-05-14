@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.headings {
+    line-height: 45px;
+}
+
 .slide-btn:hover {
     background: #fff;
     color: #30A981;

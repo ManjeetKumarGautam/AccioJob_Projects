@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { slides, assets } from '../../assets/assets';
+import React, { useState, useEffect } from 'react'
+import { slides, assets } from '../assets/assets';
 
 const Carousel = () => {
 
@@ -15,6 +15,14 @@ const Carousel = () => {
         setCurent(val);
     }
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide()
+        }, 5000)
+
+        return () => clearInterval(interval)
+    }, [current])
+
     return (
         <div className="">
             <div className="overflow-hidden">
@@ -26,11 +34,12 @@ const Carousel = () => {
                     {slides.map((item, index) => (
                         <div
                             key={item.id}
-                            className="min-w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-8 p-6 md:p-10"
+                            className="min-w-full grid grid-cols-1 lg:grid-cols-2 place-items-center gap-6 p-6 md:p-10"
                         >
                             {/* Text Content */}
                             <div className="content-area text-center lg:text-left">
-                                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">{item.title}</h1>
+                                <h1 className="text-[35px] md:text-[40px] lg:text-[45px] font-bold mb-6 headings" dangerouslySetInnerHTML={{ __html: item.title }}></h1>
+
                                 <p className="text-base md:text-lg mb-6">{item.description}</p>
                                 <button className="rounded-2xl px-6 py-2 bg-[#30A981] text-white text-sm md:text-base">
                                     {item.buttonText}
@@ -53,7 +62,7 @@ const Carousel = () => {
                             <button
                                 key={index}
                                 onClick={() => goToSlide(index)}
-                                className={`w-3 h-3 rounded-full transition-colors duration-300 ${current === index ? "bg-[#ff5733]" : "bg-gray-300"
+                                className={`w-3 h-3 rounded-full cursor-pointer transition-colors duration-300 ${current === index ? "bg-[#ff5733]" : "bg-gray-300"
                                     }`}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
@@ -61,7 +70,7 @@ const Carousel = () => {
                     </div>
 
                     {/* Navigation Arrows */}
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-4">
                         <button
                             onClick={prevSlide}
                             className="arrow w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center transition-colors duration-300"
@@ -81,7 +90,7 @@ const Carousel = () => {
             </div>
 
             {/* Decorative Line */}
-            <div className="line translate-[-50%] w-[90%] md:w-[70%] h-2 mt-8 bg-amber-600 mx-auto"></div>
+            <div className="line translate-[-50%] w-[90%] md:w-[70%] h-2 mt-8 bg-[#EDAA20] mx-auto"></div>
         </div>
 
     )

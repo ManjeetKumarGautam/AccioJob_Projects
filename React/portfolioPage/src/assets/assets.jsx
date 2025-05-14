@@ -44,10 +44,10 @@ export const assets = {
 };
 
 export const slides = [
-    { id: 1, image: layer1, buttonText: "Get a Demo", title: "A  power-packed solution to streamline all educational and institutional processes.", description: "Campus Tech is a robust solution packed with best-in-class software, consulting, audits, and empowerment activities rolled into one for your institution." },
-    { id: 2, image: layer2, buttonText: "Accreditation & Compliance", title: "Enables efficient segregation of tasks", description: "Campus Tech presents you with multiple dashboards to review the status of various accreditation tasks, including the tasks that are overdue, non-compliant, or need attention." },
-    { id: 3, image: layer3, buttonText: "Accreditation & Compliance", title: "Helps cater to accreditation requirements", description: "Campus Tech has created an associated full-fledged and robust campus automation software along with a dedicated mobile app for students that can cater to multiple accreditation and compliance requirements." },
-    { id: 4, image: layer4, buttonText: "Exam Management System", title: "Live reports and comparative analysis made available", description: "Get live reports on data added for multiple accreditations, AI-based alerts for tracking of tasks assigned and completed." }
+    { id: 1, image: layer1, buttonText: "Get a Demo", title: "A  <span style='color:#EA4722;'}>power-packed solution</span> to streamline all educational and institutional processes.", description: "Campus Tech is a robust solution packed with best-in-class software, consulting, audits, and empowerment activities rolled into one for your institution." },
+    { id: 2, image: layer2, buttonText: "Accreditation & Compliance", title: "Enables <span style='color:#EA4722;'}>efficient segregation</span> of tasks", description: "Campus Tech presents you with multiple dashboards to review the status of various accreditation tasks, including the tasks that are overdue, non-compliant, or need attention." },
+    { id: 3, image: layer3, buttonText: "Accreditation & Compliance", title: "Helps cater to <span style='color:#EA4722;'}>accreditation requirements</span>", description: "Campus Tech has created an associated full-fledged and robust campus automation software along with a dedicated mobile app for students that can cater to multiple accreditation and compliance requirements." },
+    { id: 4, image: layer4, buttonText: "Exam Management System", title: "<span style='color:#EA4722;'}>Live reports</span> and <span style='color:#EA4722;'}>comparative analysis</span> made available", description: "Get live reports on data added for multiple accreditations, AI-based alerts for tracking of tasks assigned and completed." }
 ];
 
 

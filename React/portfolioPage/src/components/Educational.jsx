@@ -3,7 +3,7 @@ import { techList } from '../assets/assets'
 
 const Educational = () => {
     return (
-        <div className='bg-[#F8F7F7] px-4 py-20 md:px-[8%] relative'>
+        <div className='bg-[#F8F7F7] px-6 py-20 md:px-[8%] relative'>
             <div className='flex flex-col lg:flex-row gap-10 lg:gap-20 max-w-screen-xl mx-auto'>
 
                 {/* Left Section */}
