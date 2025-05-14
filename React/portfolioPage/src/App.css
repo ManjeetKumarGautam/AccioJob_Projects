@@ -1,0 +1,73 @@
+* {
+    font-family: sans-serif;
+    transition: all 0.3s;
+    scroll-behavior: smooth;
+}
+
+
+.arrow:hover {
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.slide-btn:hover {
+    background: #fff;
+    color: #30A981;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.about-card-btn:hover {
+    color: #fff;
+    background: #30A981;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.about-card-wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+.about-card-wrapper::-webkit-scrollbar-track {
+    max-width: min-content;
+    background: #D9D9D9;
+    border-radius: 10px;
+}
+
+.about-card-wrapper::-webkit-scrollbar-thumb {
+    background-color: #30A981;
+    border-radius: 10px;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    background: #fff;
+    padding: 1rem 0;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 20s linear infinite;
+}
+
+.carousel-image {
+    width: auto;
+    margin-right: 40px;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.contact-content {
+    transform: translateY(-50%);
+}

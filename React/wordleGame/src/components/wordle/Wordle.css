@@ -1,0 +1,262 @@
+/* Base styles and reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #121213;
+    color: white;
+}
+
+/* Main container */
+.wordle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.message {
+    font-size: 1rem;
+    height: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+}
+
+/* Game board */
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 350px;
+}
+
+.row {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.tile {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #3a3a3c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+.tile-filled {
+    border-color: #565758;
+}
+
+.tile-active {
+    border-color: #565758;
+    animation: pulse 1.5s infinite;
+}
+
+.tile-correct {
+    background-color: #538d4e;
+    border-color: #538d4e;
+}
+
+.tile-present {
+    background-color: #b59f3b;
+    border-color: #b59f3b;
+}
+
+.tile-incorrect {
+    background-color: #3a3a3c;
+    border-color: #3a3a3c;
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+/* Keyboard */
+.keyboard {
+    width: 100%;
+    max-width: 500px;
+    margin-top: auto;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.key {
+    height: 58px;
+    min-width: 40px;
+    border: none;
+    border-radius: 4px;
+    background-color: #818384;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    user-select: none;
+}
+
+.key-wide {
+    flex: 1.5;
+    font-size: 0.75rem;
+}
+
+.key-correct {
+    background-color: #538d4e;
+}
+
+.key-present {
+    background-color: #b59f3b;
+}
+
+.key-incorrect {
+    background-color: #3a3a3c;
+}
+
+/* Game over */
+.game-over {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.new-game-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: #538d4e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.new-game-btn:hover {
+    background-color: #619b5c;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        border-color: #565758;
+    }
+
+    50% {
+        border-color: #818384;
+    }
+
+    100% {
+        border-color: #565758;
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(-5px);
+    }
+
+    20% {
+        transform: translateX(5px);
+    }
+
+    30% {
+        transform: translateX(-5px);
+    }
+
+    40% {
+        transform: translateX(5px);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+
+    60% {
+        transform: translateX(5px);
+    }
+
+    70% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+
+    90% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+    .tile {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .key {
+        height: 50px;
+        min-width: 20px;
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .tile {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
+    .key {
+        height: 45px;
+        min-width: 15px;
+        font-size: 0.7rem;
+    }
+}
